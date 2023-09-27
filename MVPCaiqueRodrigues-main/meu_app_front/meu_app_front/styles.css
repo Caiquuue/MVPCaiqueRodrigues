@@ -216,3 +216,47 @@ tr:hover {
   border: none;
   cursor: pointer;
 }
+
+h1 {
+  text-align: center;
+  margin-top: 50px; /* Ajuste conforme necessário para espaçamento superior */
+}
+
+.noticias {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.noticia {
+  background-color: white;
+  border: 1px solid black;
+  padding: 20px;
+  width: 80%; /* Ajuste conforme necessário */
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.noticia-titulo {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.noticia-descricao {
+  font-size: 16px;
+  color: #666;
+}
+
+.noticia-link {
+  font-size: 14px;
+  color: #2ab53a;
+  text-decoration: none;
+  display: block;
+  margin-top: 10px;
+}

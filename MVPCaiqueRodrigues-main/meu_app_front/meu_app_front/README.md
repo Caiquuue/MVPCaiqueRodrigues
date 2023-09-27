@@ -1,8 +1,8 @@
 # Meu Front
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
+Este MVP foi realizado para a sprint Arquitetura de software, da pós-Graduação em Engenharia de Software pela PUC-Rio.
 
-O objetivo aqui é ilutsrar o conteúdo apresentado na terceira aula.
+A API do componente B é uma API pública e sem necessidade de autenticação. 
 
 ---
 ## Como executar

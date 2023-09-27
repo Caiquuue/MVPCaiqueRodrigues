@@ -345,17 +345,69 @@ Fazer a solicitação à API para obter a lista de conhecimentos
       });
   };
 
+
+
+/*
+--------------------------------------------------------------------------------------
+Função para fazer a solicitação à API de notícias
+--------------------------------------------------------------------------------------
+*/
+function buscarNoticias(selectedKnowledge) {
+  const apiKey = "d634613f307440bdafb8ae55d43edf4e";
+  const apiUrl = `https://api.bing.microsoft.com/v7.0/news/search?q=${selectedKnowledge}`;
+  const noticiasContainer = document.querySelector(".noticias");
+
+  noticiasContainer.innerHTML = "";
+
+  fetch(apiUrl, {
+    headers: {
+      "Ocp-Apim-Subscription-Key": apiKey
+    }
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.value && data.value.length > 0) {
+        const noticias = data.value;
+
+        noticias.forEach(noticia => {
+          const noticiaDiv = document.createElement("div");
+          noticiaDiv.classList.add("noticia");
+
+          const titulo = document.createElement("h2");
+          titulo.textContent = noticia.name;
+          titulo.classList.add("noticia-titulo");
+
+          const descricao = document.createElement("p");
+          descricao.textContent = noticia.description;
+          descricao.classList.add("noticia-descricao");
+
+          const link = document.createElement("a");
+          link.href = noticia.url; // Define o URL do link como o URL da notícia
+          link.textContent = "Leia mais"; // Texto do link (pode ser personalizado)
+          link.classList.add("noticia-link");
+
+          noticiaDiv.appendChild(titulo);
+          noticiaDiv.appendChild(descricao);
+          noticiaDiv.appendChild(link); // Adiciona o link à div da notícia
+
+          noticiasContainer.appendChild(noticiaDiv);
+        });
+      }
+    })
+    .catch(error => {
+      console.error("Erro na solicitação:", error);
+    });
+}
+
 /*
 --------------------------------------------------------------------------------------
 Ouvinte de eventos para o botão de pesquisa
 --------------------------------------------------------------------------------------
 */
-  searchBtn.addEventListener("click", () => {
-    const selectedKnowledge = dataList.value;
-    buscarProfissionais(selectedKnowledge);
-  });
-  fetchListaConhecimentos();
+searchBtn.addEventListener("click", () => {
+  const selectedKnowledge = dataList.value;
+  buscarProfissionais(selectedKnowledge);
+  buscarNoticias(selectedKnowledge);
 });
-
-
-
+fetchListaConhecimentos();
+});
